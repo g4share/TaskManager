@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10084"/>
     </dependencies>
     <scenes>
-        <!--Tssk Manager-->
+        <!--Task Manager-->
         <scene sceneID="IsG-rW-vIH">
             <objects>
                 <tableViewController id="UYR-9b-PTr" customClass="TasksViewController" customModule="Task_Manager" customModuleProvider="target" sceneMemberID="viewController">
@@ -28,7 +28,7 @@
                             <outlet property="delegate" destination="UYR-9b-PTr" id="IM8-sP-MoB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tssk Manager" id="63e-II-OkX"/>
+                    <navigationItem key="navigationItem" title="Task Manager" id="63e-II-OkX"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPZ-Bx-E0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
