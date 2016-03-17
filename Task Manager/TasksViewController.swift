@@ -10,16 +10,12 @@ import UIKit
 
 class TasksViewController: UITableViewController {
     var tasks = [Task]()
+    let receiver: DataRceiver = MemoryDataReceiver()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tasks = [Task(name: "Create useless project"),
-                      Task(name: "Put it on GitHub"),
-                      Task(name: "Share link"),
-                      Task(name: "Receive congratulations"),
-                      Task(name: "Change a bit"),
-                      Task(name: "Learn Swift")]
+        tasks = receiver.getData()
     }
     
     override func didReceiveMemoryWarning() {
