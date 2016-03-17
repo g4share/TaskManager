@@ -15,9 +15,7 @@ class TasksViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        receiver.getTasks({ (tasks: [Task]?) -> () in
-            self.tasks = tasks!
-        })
+        refreshTasks()
     }
     
     override func didReceiveMemoryWarning() {
@@ -25,15 +23,31 @@ class TasksViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tasks.count
+        return tasks.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as UITableViewCell
-        let task = self.tasks[indexPath.row]
+        let task = tasks[indexPath.row]
         
         cell.textLabel?.text = task.name
         
         return cell;
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        receiver.removeTask(indexPath.row, taskRemoved: { () -> () in
+            self.refreshTasks()
+            
+            tableView.beginUpdates()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.endUpdates()
+        })
+    }
+    
+    func refreshTasks() {
+        receiver.getTasks({ (tasks: [Task]?) -> () in
+            self.tasks = tasks!
+        })
     }
 }

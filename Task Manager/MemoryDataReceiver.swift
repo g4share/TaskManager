@@ -25,7 +25,8 @@ class MemoryDataReceiver: DataRceiver {
         tasksReceived(tasks: tasks)
     }
     
-    func removeTask(id: Int, taskRemoved: (id: Int) -> ()) {
-        taskRemoved(id: id)
+    func removeTask(id: Int, taskRemoved: () -> ()) {
+        tasks.removeAtIndex(id)
+        taskRemoved()
     }
 }
