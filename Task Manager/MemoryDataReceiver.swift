@@ -9,6 +9,7 @@
 import Foundation
 
 class MemoryDataReceiver: DataRceiver {
+    
     var tasks = [Task]()
     
     init () {
@@ -20,7 +21,11 @@ class MemoryDataReceiver: DataRceiver {
                       Task(name: "Learn Swift")]
     }
     
-    func getData() -> [Task] {
-        return self.tasks
+    func getTasks(tasksReceived: (tasks: [Task]?) -> ()) {
+        tasksReceived(tasks: tasks)
+    }
+    
+    func removeTask(id: Int, taskRemoved: (id: Int) -> ()) {
+        taskRemoved(id: id)
     }
 }

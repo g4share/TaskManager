@@ -14,8 +14,10 @@ class TasksViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tasks = receiver.getData()
+
+        receiver.getTasks({ (tasks: [Task]?) -> () in
+            self.tasks = tasks!
+        })
     }
     
     override func didReceiveMemoryWarning() {
