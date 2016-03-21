@@ -27,11 +27,11 @@ class TasksViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! TaskViewCell
+        
         let task = tasks[indexPath.row]
-        
-        cell.textLabel?.text = task.name
-        
+        cell.load(task)
+                
         return cell;
     }
     
