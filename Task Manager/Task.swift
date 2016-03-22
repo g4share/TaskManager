@@ -10,5 +10,5 @@ import Foundation
 
 struct Task {
     let name: String
-    let dueDate: NSDate?
+    let dueDate: NSDate!
 }

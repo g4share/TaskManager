@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10084"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Task Manager-->
@@ -21,10 +22,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="task_new.png" translatesAutoresizingMaskIntoConstraints="NO" id="S1P-Jf-5Kd">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="task_new.png" translatesAutoresizingMaskIntoConstraints="NO" id="S1P-Jf-5Kd">
                                             <rect key="frame" x="0.0" y="5" width="87" height="70"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3YR-s5-mCA">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3YR-s5-mCA">
                                             <rect key="frame" x="87" y="5" width="505" height="70"/>
                                             <color key="backgroundColor" red="0.66666666669999997" green="0.87843137250000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
@@ -35,6 +36,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="S1P-Jf-5Kd" firstAttribute="leading" secondItem="yo3-WO-Pa5" secondAttribute="leadingMargin" constant="-8" id="5Jp-m3-lRF"/>
+                                        <constraint firstItem="3YR-s5-mCA" firstAttribute="trailing" secondItem="yo3-WO-Pa5" secondAttribute="trailingMargin" constant="5" id="HvH-sw-YOt"/>
+                                        <constraint firstItem="3YR-s5-mCA" firstAttribute="leading" secondItem="S1P-Jf-5Kd" secondAttribute="trailing" id="Mx4-2Q-cod"/>
+                                        <constraint firstItem="3YR-s5-mCA" firstAttribute="trailing" secondItem="yo3-WO-Pa5" secondAttribute="trailingMargin" id="TJH-DC-zt6"/>
+                                        <constraint firstItem="3YR-s5-mCA" firstAttribute="trailing" secondItem="yo3-WO-Pa5" secondAttribute="trailingMargin" id="uXE-3y-DHp"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="imgTaskColor" destination="3YR-s5-mCA" id="dBL-Y6-j8A"/>

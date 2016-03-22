@@ -37,11 +37,11 @@ class TaskViewCell: UITableViewCell {
         imgTaskColor?.backgroundColor = taskColor
     }
     
-    func isDelayed(dueDate: NSDate?) -> Bool {
+    func isDelayed(dueDate: NSDate!) -> Bool {
         if dueDate == nil {
             return false
         }
         
-        return dueDate?.compare(NSDate()) == .OrderedAscending
+        return dueDate!.compare(NSDate()) == .OrderedAscending
     }
 }
