@@ -16,16 +16,21 @@ class MemoryDataReceiver: DataRceiver {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        self.tasks = [Task(name: "Create useless project", dueDate: dateFormatter.dateFromString("2001-01-01")!),
-                      Task(name: "Put it on GitHub", dueDate: dateFormatter.dateFromString("2001-01-01")!),
-                      Task(name: "Share link", dueDate: dateFormatter.dateFromString("2018-01-01")!),
-                      Task(name: "Receive congratulations", dueDate: dateFormatter.dateFromString("2001-01-01")!),
+        self.tasks = [Task(name: "Create useless project", dueDate: dateFormatter.dateFromString("2001-01-01")),
+                      Task(name: "Put it on GitHub", dueDate: dateFormatter.dateFromString("2001-01-01")),
+                      Task(name: "Share link", dueDate: dateFormatter.dateFromString("2018-01-01")),
+                      Task(name: "Receive congratulations", dueDate: dateFormatter.dateFromString("2001-01-01")),
                       Task(name: "Change a bit", dueDate: nil),
                       Task(name: "Learn Swift", dueDate:  nil)]
     }
     
     func getTasks(tasksReceived: (tasks: [Task]?) -> ()) {
         tasksReceived(tasks: tasks)
+    }
+    
+    func addTask(task: Task, taskAdded: (task: Task) -> ()) {
+        tasks.append(task)
+        taskAdded(task: task)
     }
     
     func removeTask(id: Int, taskRemoved: () -> ()) {

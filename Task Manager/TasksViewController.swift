@@ -18,25 +18,18 @@ class TasksViewController: UITableViewController {
         refreshTasks()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! TaskViewCell
-        
-        let task = tasks[indexPath.row]
-        cell.load(task)
-                
+        cell.load(tasks[indexPath.row])
         return cell;
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        receiver.removeTask(indexPath.row, taskRemoved: { () -> () in
+        receiver.removeTask(indexPath.row, taskRemoved: {
             self.refreshTasks()
             
             tableView.beginUpdates()
@@ -45,9 +38,26 @@ class TasksViewController: UITableViewController {
         })
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "addTaskAction" {
+            let addView = segue.destinationViewController as! AddTaskViewController
+            addView.taskCreated = { (task: Task) -> () in
+                self.receiver.addTask(task, taskAdded: self.taskAdded)
+            }
+        }
+    }
+    
+    func taskAdded(task: Task) {
+        self.refreshTasks()
+        
+        tableView.beginUpdates()
+        tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: tasks.count - 1, inSection: 0)], withRowAnimation: .Automatic)
+        tableView.endUpdates()
+    }
+    
     func refreshTasks() {
-        receiver.getTasks({ (tasks: [Task]?) -> () in
+        receiver.getTasks { (tasks: [Task]?) -> () in
             self.tasks = tasks!
-        })
+        }
     }
 }

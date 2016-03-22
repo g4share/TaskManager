@@ -10,5 +10,9 @@ import Foundation
 
 struct Task {
     let name: String
-    let dueDate: NSDate!
+    let dueDate: NSDate?
+    
+    var description: String {
+        return "\(name) to be done till \(dueDate)"
+    }
 }

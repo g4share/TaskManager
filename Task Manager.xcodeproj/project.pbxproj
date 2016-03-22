@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1414869D1CA0730A00116583 /* task_old.png in Resources */ = {isa = PBXBuildFile; fileRef = 1414869C1CA0730A00116583 /* task_old.png */; };
+		141486A31CA1D59B00116583 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141486A21CA1D59B00116583 /* AddTaskViewController.swift */; };
 		1462CECB1C99F77E00105E8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1462CECA1C99F77E00105E8E /* AppDelegate.swift */; };
 		1462CED01C99F77E00105E8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1462CECE1C99F77E00105E8E /* Main.storyboard */; };
 		1462CED21C99F77E00105E8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1462CED11C99F77E00105E8E /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		1414869C1CA0730A00116583 /* task_old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = task_old.png; sourceTree = "<group>"; };
+		141486A21CA1D59B00116583 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		1462CEC71C99F77E00105E8E /* Task Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1462CECA1C99F77E00105E8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1462CECF1C99F77E00105E8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				1462CED61C99F77E00105E8E /* Info.plist */,
 				1462CEDE1C99FC9500105E8E /* TasksViewController.swift */,
 				14936A7D1C9F1943002A692B /* TaskViewCell.swift */,
+				141486A21CA1D59B00116583 /* AddTaskViewController.swift */,
 			);
 			path = "Task Manager";
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				1462CEDD1C99F7AC00105E8E /* Task.swift in Sources */,
 				14936A7E1C9F1943002A692B /* TaskViewCell.swift in Sources */,
 				1462CECB1C99F77E00105E8E /* AppDelegate.swift in Sources */,
+				141486A31CA1D59B00116583 /* AddTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,5 +10,7 @@ import Foundation
 
 protocol DataRceiver {
     func getTasks(tasksReceived: (tasks: [Task]?) -> ())
+    
+    func addTask(task: Task, taskAdded: (task: Task) -> ())
     func removeTask(id: Int, taskRemoved: () -> ())
 }
