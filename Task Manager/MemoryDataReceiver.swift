@@ -20,7 +20,7 @@ class MemoryDataReceiver: DataRceiver {
                       Task(name: "Put it on GitHub", dueDate: dateFormatter.dateFromString("2001-01-01")),
                       Task(name: "Share link", dueDate: dateFormatter.dateFromString("2018-01-01")),
                       Task(name: "Receive congratulations", dueDate: dateFormatter.dateFromString("2001-01-01")),
-                      Task(name: "Change a bit", dueDate: nil),
+                      Task(name: "Change a bit", dueDate: NSDate()),
                       Task(name: "Learn Swift", dueDate:  nil)]
     }
     
@@ -33,8 +33,8 @@ class MemoryDataReceiver: DataRceiver {
         taskAdded(task: task)
     }
     
-    func removeTask(id: Int, taskRemoved: () -> ()) {
+    func removeTask(id: Int, taskRemoved: (id: Int) -> ()) {
         tasks.removeAtIndex(id)
-        taskRemoved()
+        taskRemoved(id: id)
     }
 }

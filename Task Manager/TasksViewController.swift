@@ -10,7 +10,7 @@ import UIKit
 
 class TasksViewController: UITableViewController {
     var tasks = [Task]()
-    let receiver: DataRceiver = MemoryDataReceiver()
+    let receiver: DataRceiver = FileDataReceiver()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,20 +29,18 @@ class TasksViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        receiver.removeTask(indexPath.row, taskRemoved: {
-            self.refreshTasks()
-            
-            tableView.beginUpdates()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            tableView.endUpdates()
-        })
+        receiver.removeTask(indexPath.row) {
+            self.taskRemoved($0)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "addTaskAction" {
             let addView = segue.destinationViewController as! AddTaskViewController
-            addView.taskCreated = { (task: Task) -> () in
-                self.receiver.addTask(task, taskAdded: self.taskAdded)
+            addView.taskCreated = {
+                self.receiver.addTask($0) {
+                    self.taskAdded($0)
+                }
             }
         }
     }
@@ -50,14 +48,26 @@ class TasksViewController: UITableViewController {
     func taskAdded(task: Task) {
         self.refreshTasks()
         
-        tableView.beginUpdates()
-        tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: tasks.count - 1, inSection: 0)], withRowAnimation: .Automatic)
-        tableView.endUpdates()
+        dispatch_async(dispatch_get_main_queue()) {
+            self.tableView.beginUpdates()
+            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.tasks.count - 1, inSection: 0)], withRowAnimation: .Automatic)
+            self.tableView.endUpdates()
+        }
+    }
+    
+    func taskRemoved(id: Int) {
+        self.refreshTasks()
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            self.tableView.beginUpdates()
+            self.tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: id, inSection: 0)], withRowAnimation: .Automatic)
+            self.tableView.endUpdates()
+        }
     }
     
     func refreshTasks() {
-        receiver.getTasks { (tasks: [Task]?) -> () in
-            self.tasks = tasks!
+        receiver.getTasks {
+            self.tasks = $0!
         }
     }
 }

@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Create useless project",
+    "dueDate": "2001-01-01"
+  },
+  {
+    "name": "Put it on GitHub",
+    "dueDate": "2001-01-01"
+  },
+  {
+    "name": "Share link",
+    "dueDate": "2018-01-01"
+  },
+  {
+    "name": "Receive congratulations",
+    "dueDate": "2001-01-01"
+  },
+  {
+    "name": "Change a bit",
+    "dueDate": ":now"
+  },
+  {
+    "name": "Read from file",
+    "dueDate": ":now"
+  },
+  {
+    "name": "Learn Swift"
+  }
+]

@@ -11,11 +11,14 @@ import UIKit
 class AddTaskViewController: UIViewController {
     var taskCreated: ((task: Task) -> ())?
     
-    @IBOutlet weak var tfMessage: UITextField?
+    @IBOutlet weak var tfMessage: UITextField!
+    @IBOutlet weak var dtSwitch: UISwitch!
+    @IBOutlet weak var dpDate: UIDatePicker!
     
     @IBAction func cancelButtonTapped(sender: UIButton) {
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
     @IBAction func doneButtonTapped(sender: UIButton) {
         if taskCreated  != nil {
             callTaskCreated()
@@ -29,7 +32,9 @@ class AddTaskViewController: UIViewController {
     }
 
     func callTaskCreated() {
-        let task = Task(name: (tfMessage?.text)!, dueDate: nil)
+        let dueDate: NSDate? = dtSwitch.on ? dpDate.date : nil
+        let task = Task(name: tfMessage.text!, dueDate: dueDate)
+
         taskCreated!(task: task)
     }
 }
