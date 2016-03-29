@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Task Manager-->
@@ -14,6 +15,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="oZZ-O5-mPT">
+                            <rect key="frame" x="0.0" y="173" width="600" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" red="1" green="0.66501716750804385" blue="0.46484442416648153" alpha="1" colorSpace="calibratedRGB"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="81" id="apc-lq-WoW" customClass="TaskViewCell" customModule="Task_Manager" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="81"/>
@@ -22,7 +28,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="A325016A-7E05-4724-8D39-40C40460E161" translatesAutoresizingMaskIntoConstraints="NO" id="S1P-Jf-5Kd">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="80F254F9-62FF-45C6-A803-15F8565DC024" translatesAutoresizingMaskIntoConstraints="NO" id="S1P-Jf-5Kd">
                                             <rect key="frame" x="0.0" y="5" width="87" height="70"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3YR-s5-mCA">
@@ -68,12 +74,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Task Manager" id="63e-II-OkX">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="d6F-H9-3fd">
-                            <connections>
-                                <segue destination="1UW-KV-NS3" kind="show" identifier="addTaskAction" id="LXI-zY-NpP"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="d6F-H9-3fd">
+                                <connections>
+                                    <segue destination="1UW-KV-NS3" kind="show" identifier="addTaskAction" id="LXI-zY-NpP"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="R9z-Su-s66">
+                                <connections>
+                                    <action selector="refreshButtonTapped:" destination="UYR-9b-PTr" id="SJv-CZ-Dnb"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="aiLoadData" destination="oZZ-O5-mPT" id="ikR-XB-I0r"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPZ-Bx-E0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -160,7 +176,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="A325016A-7E05-4724-8D39-40C40460E161" width="87" height="70">
+        <image name="80F254F9-62FF-45C6-A803-15F8565DC024" width="87" height="70">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
